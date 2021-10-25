@@ -7,14 +7,14 @@ where
     S: tracing::Subscriber,
     S: for<'lookup> tracing_subscriber::registry::LookupSpan<'lookup>,
 {
-    fn new_span(
+    fn on_new_span(
         &self,
         attrs: &tracing::span::Attributes<'_>,
         id: &tracing::span::Id,
         ctx: tracing_subscriber::layer::Context<'_, S>,
     ) {
         let span = ctx.span(id).unwrap();
-        println!("Got new_span!");
+        println!("Got on_new_span!");
         println!("  level={:?}", span.metadata().level());
         println!("  target={:?}", span.metadata().target());
         println!("  name={:?}", span.metadata().name());

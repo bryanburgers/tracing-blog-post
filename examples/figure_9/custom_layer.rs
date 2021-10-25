@@ -8,7 +8,7 @@ where
     S: tracing::Subscriber,
     S: for<'lookup> tracing_subscriber::registry::LookupSpan<'lookup>,
 {
-    fn new_span(
+    fn on_new_span(
         &self,
         attrs: &tracing::span::Attributes<'_>,
         id: &tracing::span::Id,
